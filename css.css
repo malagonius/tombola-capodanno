@@ -1,0 +1,60 @@
+#tombola {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 10rem); /* Adjust the gap as needed */
+    height: 100vh;
+    gap: 1rem; /* Set the desired gap between .casella elements */
+    margin: 5rem; /* Adjust the margin to center the grid if needed */
+}
+
+body{
+	background: #ededed;
+}
+
+.casella {
+    box-sizing: border-box;
+    flex: 0 0 calc(10% - 1rem); /* Adjust for the gap */
+    height: calc(10vh - 1rem); /* Adjust for the gap */
+    border: 1px solid #000;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    position: relative;
+}
+
+.casella span{
+	position: absolute;
+	color: #fefefe;
+	font-size: 3rem
+}
+
+.casella.checked {
+    background-color: green;
+    color: white;
+}
+
+
+#actions{
+	margin:5rem;
+}
+
+#actions * {
+	font-size: 3rem
+}
+
+#actions #segna, #actions #random{
+	font-size: 3rem;
+    background: green;
+    border-color: green;
+    border-radius: 1rem;
+    cursor: pointer;
+    padding: 0 2rem;
+    color: #fefefe
+}
+
+.action-container{
+	margin-bottom: 2rem
+}
