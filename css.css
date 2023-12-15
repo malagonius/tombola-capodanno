@@ -1,10 +1,12 @@
 #tombola {
     display: flex;
     flex-wrap: wrap;
-    width: calc(100% - 10rem); /* Adjust the gap as needed */
+    width: calc(100% - 10rem);
     height: 100vh;
-    gap: 1rem; /* Set the desired gap between .casella elements */
-    margin: 5rem; /* Adjust the margin to center the grid if needed */
+    gap: 1rem;
+    margin: 0 5rem;
+    justify-content: space-between;
+    align-content: flex-start;
 }
 
 body{
@@ -23,6 +25,15 @@ body{
     justify-content: center;
     font-size: 0.8em;
     position: relative;
+}
+.casella.checked:before{
+	content: '';
+}
+.casella:before{
+	content: attr(data-i);
+	color:gray;
+	font-size: 3rem;
+	position: relative;
 }
 
 .casella span{

@@ -1,17 +1,52 @@
 const tombola = document.getElementById('tombola');
 
-const nDiCaselle = 100
+const nDiCaselle = 90
 
 tombola.innerHTML = ""
+
+const leftDistance = 2;
+let topDistance = 0;
+const topDistanceCoefficent = 2;
 
 for (var i = 1; i <= nDiCaselle ; i++) {
 	const casella = document.createElement('div');
 	const span = document.createElement('span');
 	casella.className = 'casella'
 	casella.id = i;
+	const casellaId = parseInt(casella.id);
+	casella.style.left = `${leftDistance}rem`;
+	casella.style.top = `${topDistance}rem`;
+	if(isUnitFiveOrLess(casellaId)){
+		casella.style.left = `-${leftDistance}rem`;
+	}
+	if(isMultipleOfThirty(casellaId)){
+		topDistance += topDistanceCoefficent;
+	}
+	if(isUnitOne(casellaId)){
+		casella.classList.add('first');
+		casella.setAttribute('data-i',casellaId);
+	}
 	casella.appendChild(span);
 	tombola.appendChild(casella);
 }
+
+function isUnitFiveOrLess(x) {
+    const lastTwoDigits = x % 10;
+
+    // Check if the last two digits are 5 or less and x is not a multiple of 10
+    return lastTwoDigits <= 5 && x % 10 !== 0;
+}
+function isMultipleOfThirty(x){
+	return x % 30 == 0;
+}
+
+function getGroupOfThirty(x){
+	return parseInt( x / 30 );
+}
+function isUnitOne(x) {
+    return firstDigit = x % 10 == 1;
+}
+
 
 
 document.querySelectorAll('.casella').forEach(function (casella) {
