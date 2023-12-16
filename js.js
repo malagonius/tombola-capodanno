@@ -22,10 +22,9 @@ for (var i = 1; i <= nDiCaselle ; i++) {
 	if(isMultipleOfThirty(casellaId)){
 		topDistance += topDistanceCoefficent;
 	}
-	if(isUnitOne(casellaId)){
-		casella.classList.add('first');
-		casella.setAttribute('data-i',casellaId);
-	}
+	casella.classList.add('first');
+	casella.setAttribute('data-i',casellaId);
+	
 	casella.appendChild(span);
 	tombola.appendChild(casella);
 }
@@ -51,16 +50,25 @@ function isUnitOne(x) {
 
 document.querySelectorAll('.casella').forEach(function (casella) {
     casella.addEventListener('click', function () {
+
+    	const span = casella.getElementsByTagName('span')[0]
+    	if (casella.classList.contains('checked')) {
+    		if(confirm(`La casella ${casella.id} è già segnata, desideri rimuoverla?`)){
+    			span.innerHTML = '';
+    		}
+    		else{
+    			return
+    		}
+        } else {
+            span.innerHTML = casella.id;
+        }
+
         // Toggle the 'checked' class on click
         casella.classList.toggle('checked');
 
-        const span = casella.getElementsByTagName('span')[0]
+      
         // Display the ID or custom prop when checked
-        if (casella.classList.contains('checked')) {
-            span.innerHTML = casella.id;
-        } else {
-            span.innerHTML = '';
-        }
+
     });
 });
 
@@ -106,10 +114,12 @@ toggleRandom = function(){
 
 	
 	let keepTrying = true;
+	let casellaRandom
 	while(keepTrying){
-		const casellaRandom = getRandomNumber(caselleNonSegnate.length);
+		casellaRandom = getRandomNumber(caselleNonSegnate.length);
 		keepTrying = doToggle(caselleNonSegnate[casellaRandom-1].id);
 	}
+	alert(`Estratta la casella numero ${caselleNonSegnate[casellaRandom-1].id}`)
 }
 
 

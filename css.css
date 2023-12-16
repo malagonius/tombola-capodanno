@@ -30,10 +30,12 @@ body{
 	content: '';
 }
 .casella:before{
-	content: attr(data-i);
-	color:gray;
-	font-size: 3rem;
-	position: relative;
+    content: attr(data-i);
+    color: gray;
+    position: absolute;
+    font-size: 1.8rem;
+    top: 8px;
+    left: 8px;
 }
 
 .casella span{
